@@ -5,7 +5,7 @@ body{
   margin: 20px 40px;
   font-size: 1.2rem;
   letter-spacing: 1px;
-  background: #fafafa;
+  background: #ebc5c5;
 }
 h1, h2, h3, h4, ul, li, a, p, input, label, button, div, footer{
   margin: 0;
@@ -23,7 +23,7 @@ nav{
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin-bottom: 120px;
+  margin-bottom: 50px;
 }
 nav ul{
   display: flex;
@@ -45,12 +45,13 @@ nav li a{
   background: #FEE996;
 }
 form h2{
-  font-size: 2.4em;
+  font-size: 2em;
+  text-align: center;
   font-weight: 900;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
 }
 form{
-  width: 360px;
+  width: 300px;
   margin: 0 auto;
   padding: 30px;
   box-shadow: 1px 2px 3px rgba(0,0,0,0.1);
@@ -58,7 +59,7 @@ form{
   background: white;
 }
 input{
-  padding: 10px 12px;
+  padding: 5px 6px;
   border-radius: 4px;
   border: 1px solid #ddd;
   font-size: 1em;
@@ -66,7 +67,7 @@ input{
 }
 label{
   display: block;
-  margin: 20px 0 10px;
+  margin: 10px 0 5px;
 }
 button{
   margin-top: 30px;
@@ -112,28 +113,14 @@ header .btn{
   display: inline-block;
   font-size: 0.8em;
 }
-.recipes{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  column-gap: 30px;
-  row-gap: 80px;
-  margin: 80PX AUTO;
-  max-width: 1200px;
-}
-.recipe{
-  display: inline-block;
-  border-radius: 20px;
-  background: white;
-  position: relative;
-  text-align: center;
-  padding: 0 20px 30px 20px
-}
-.recipe img{
-  width: 100px;
-  margin: -30px auto 20px;
-}
 footer{
   text-align: center;
-  margin-top: 120px;
-  color: #aaa;
+  margin-top: 40px;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: rgb(97, 91, 91);
+}
+.headings{
+  font-size: 1.5em;
+  font-weight: bold;
 }
