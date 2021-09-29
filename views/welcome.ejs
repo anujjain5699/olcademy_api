@@ -1,0 +1,15 @@
+<%- include('partials/header'); -%>
+
+
+  <div class="headings">
+    <h2>Welcome,<% if (user) { %>
+      <h4><%= user.name %><h4>
+    <% } %></h2>
+    <br>
+    <a href="/urls" class="btn">View urls</a>
+  </div>
+  
+
+
+
+<%- include('partials/footer'); -%>

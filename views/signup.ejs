@@ -1,0 +1,87 @@
+<%- include('partials/header'); -%>
+
+    <form>
+        <h2>Sign up</h2>
+        <label for="name">Name</label>
+        <input type="text" name="name" required />
+        <div class="name-error"></div>
+        <label for="email">Email</label>
+        <input type="text" name="email" required />
+        <div class="email-error"></div>
+        <label for="password">Password</label>
+        <input type="password" name="password" required />
+        <div class="password-error"></div>
+        <label></label>
+        <input class="datepicker" type="datetime-local" name="datepicker" placeholder="Date of Birth" required />
+        <div class="datepicker-error"></div>
+        <label for="gender">Select Gender :</label>
+        <select name="gender" id="gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>ab</option>
+        </select>
+        <button>Sign up</button>
+    </form>
+
+    <%- include('partials/footer'); -%>
+
+        <%# flatpicker %>
+            <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+            <%# date %>
+                <script>
+                    flatpickr("input[type=datetime-local]", {
+                        dateFormat: "d-m-Y",
+                        maxDate: "today"
+                    });
+                </script>
+                <script>
+                    const form = document.querySelector('form')
+
+                    //name error
+                    const nameError = document.querySelector('.name-error')
+                    //email error
+                    const emailError = document.querySelector('.email-error')
+                    //password error
+                    const passwordError = document.querySelector('.password-error')
+                    //datepicker error
+                    const datepickerError = document.querySelector('.datepicker-error')
+                    //gender error
+                    const genderError = document.querySelector('.gender-error')
+
+                    form.addEventListener('submit', async (e) => {
+                        e.preventDefault();
+
+                        //get errors
+                        emailError.textContent = ''
+                        nameError.textContent = ''
+                        passwordError.textContent = ''
+                        datepickerError.textContent = ''
+
+                        //get values
+                        const name = form.name.value;
+                        const email = form.email.value;
+                        const password = form.password.value;
+                        const gender = form.gender.value;
+                        const datepicker = form.datepicker.value;
+                        try {
+                            const res = await fetch('/signup', {
+                                method: "POST",
+                                body: JSON.stringify({ name: name, email: email, password: password, dob: datepicker, gender: gender }),
+                                headers: { 'Content-Type': 'application/json' }
+                            })
+                            const data = await res.json();
+                            console.log(data);
+                            if (data.errors) {
+                                emailError.textContent = data.errors.email
+                                nameError.textContent = data.errors.name
+                                passwordError.textContent = data.errors.password
+                                datepickerError.textContent = data.errors.dob
+                            }
+                            if (data.user) {
+                                location.assign('/')
+                            }
+                        } catch (e) {
+                            console.log(e)
+                        }
+                    })
+
+                </script>
